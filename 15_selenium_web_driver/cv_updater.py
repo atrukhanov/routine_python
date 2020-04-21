@@ -46,10 +46,12 @@ def send_reply(browser, config):
 				reply_vacancy = v.find_element_by_xpath('.//a[@data-qa="vacancy-serp__vacancy_response"]')
 				browser.execute_script("arguments[0].click();", reply_vacancy)
 				time.sleep(5)
+				link_job_title = v.find_element_by_xpath('.//a[@data-qa="vacancy-serp__vacancy-title"]')
+				job_title = link_job_title.text
 				reply_message = browser.find_element_by_xpath('/html/body/div[9]/div[1]/div/form/div[2]/div[2]/span/span') #факап
 				reply_message.click()
 				reply_message_text = browser.find_element_by_xpath('/html/body/div[9]/div[1]/div/form/div[2]/div[2]/div/textarea') #факап
-				reply_message_text.send_keys(reply_text)
+				reply_message_text.send_keys(reply_text.format(job_title))
 				button_submit = browser.find_element_by_xpath('/html/body/div[9]/div[1]/div/form/div[4]/div/button') #факап
 				button_submit.click()
 				time.sleep(5)
