@@ -72,9 +72,6 @@ def update_cv(browser,resume_id):
 		time.sleep(10)
 		button_submit = browser.find_element_by_xpath('//button[@data-qa="resume-update-button"]')
 		if button_submit.is_enabled(): browser.execute_script("arguments[0].click();", button_submit)
-		# actions = ActionChains(browser)
-		# actions.move_to_element(button_submit).perform()
-		# button_submit.click()
 	except Exception as ex:
 		raise ex
 
